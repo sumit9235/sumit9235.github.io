@@ -44,14 +44,6 @@ function typeWriter() {
     tooltips: true,
   });
 
-//   document.getElementById("resume-button-1").onclick=()=>{
-// window.open("https://drive.google.com/file/d/1uNOKIhxVfpiUYkmvo-jXbHojhObKpKDE/view?usp=sharing")
-//   }
-
-  // document.getElementById("resume-button-2").onclick=()=>{
-  //  window.open("https://drive.google.com/file/d/1uNOKIhxVfpiUYkmvo-jXbHojhObKpKDE/view?usp=sharing")
-  // }
-     
   
   function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
