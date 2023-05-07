@@ -2,7 +2,7 @@ let i=0;
 let txt="Full Stack Web Developer.";
 let speed=150;
 
-typeWriter()
+typeWriter();
 
 function typeWriter() {
     if(i < txt.length){
