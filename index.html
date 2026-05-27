@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sumit Kumar Yadav - Full Stack Developer with DevOps knowledge. Portfolio showcasing professional projects, technical skills, and contact details." />
+  <title>Sumit Kumar Yadav | Full Stack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            display: ['Bebas Neue', 'sans-serif']
+          },
+          colors: {
+            void: '#050712',
+            steel: '#111827',
+            reactor: '#22d3ee',
+            arc: '#67e8f9',
+            ember: '#f97316',
+            gold: '#facc15',
+            danger: '#ef4444'
+          },
+          boxShadow: {
+            glow: '0 0 40px rgba(34, 211, 238, 0.28)',
+            redGlow: '0 0 40px rgba(239, 68, 68, 0.22)',
+            goldGlow: '0 0 40px rgba(250, 204, 21, 0.22)'
+          },
+          animation: {
+            float: 'float 5s ease-in-out infinite',
+            pulseGlow: 'pulseGlow 2.4s ease-in-out infinite',
+            runHero: 'runHero 1.3s linear infinite',
+            scan: 'scan 2.5s linear infinite',
+            spinSlow: 'spin 12s linear infinite',
+            fadeUp: 'fadeUp .75s ease forwards'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-16px)' }
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(34,211,238,.25), inset 0 0 24px rgba(34,211,238,.12)' },
+              '50%': { boxShadow: '0 0 60px rgba(34,211,238,.42), inset 0 0 32px rgba(34,211,238,.2)' }
+            },
+            runHero: {
+              '0%': { transform: 'translateX(-120%) rotate(-7deg)' },
+              '100%': { transform: 'translateX(120vw) rotate(7deg)' }
+            },
+            scan: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(100%)' }
+            },
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { font-family: Inter, sans-serif; background: #050712; color: white; overflow-x: hidden; }
+    .noise { position: fixed; inset: 0; pointer-events: none; opacity: .12; z-index: 2; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); }
+    .grid-bg { background-image: linear-gradient(rgba(34,211,238,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,.08) 1px, transparent 1px); background-size: 52px 52px; }
+    .hero-card { transform-style: preserve-3d; transition: transform .25s ease; }
+    .hero-card:hover { transform: perspective(1000px) rotateX(4deg) rotateY(-5deg) translateY(-8px); }
+    .clip-hero { clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); }
+    .comic-border { box-shadow: 10px 10px 0 rgba(34,211,238,.16), inset 0 0 0 1px rgba(255,255,255,.12); }
+    .nav-link.active { color: #22d3ee; background: rgba(34,211,238,.12); }
+    .reveal { opacity: 0; transform: translateY(26px); transition: .75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .skill-card:hover .skill-icon { transform: scale(1.1) rotate(-4deg); }
+    .project-card:hover .project-image { transform: scale(1.04); }
+    .loader-hide { opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility .7s ease; }
+    .runner:nth-child(2) { animation-delay: .18s; }
+    .runner:nth-child(3) { animation-delay: .36s; }
+    .runner:nth-child(4) { animation-delay: .54s; }
+  </style>
+</head>
+<body class="grid-bg">
+  <div id="loader" class="fixed inset-0 z-[9999] bg-void overflow-hidden flex flex-col items-center justify-center">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,.18),transparent_45%)]"></div>
+    <div class="relative w-44 h-44 rounded-full border border-cyan-300/30 animate-pulseGlow grid place-items-center">
+      <div class="absolute inset-5 rounded-full border border-orange-400/30 animate-spinSlow"></div>
+      <div class="absolute inset-10 rounded-full border border-yellow-300/30 animate-spinSlow"></div>
+      <div class="grid h-24 w-24 place-items-center overflow-hidden rounded-full border border-cyan-300/30 bg-cyan-300/10">
+        <div id="loaderRocket" class="h-full w-full"></div>
+        <span class="hidden font-display text-6xl tracking-wider text-cyan-200">SY</span>
+      </div>
+    </div>
+    <p class="relative mt-8 font-display text-3xl tracking-[.25em] text-cyan-100">ASSEMBLING PORTFOLIO</p>
+    <div class="relative mt-8 h-14 w-full overflow-hidden">
+      <div class="runner absolute top-1/2 -translate-y-1/2 text-4xl animate-runHero">🛡️</div>
+      <div class="runner absolute top-1/2 -translate-y-1/2 text-4xl animate-runHero">⚡</div>
+      <div class="runner absolute top-1/2 -translate-y-1/2 text-4xl animate-runHero">🚀</div>
+      <div class="runner absolute top-1/2 -translate-y-1/2 text-4xl animate-runHero">🔥</div>
+    </div>
+  </div>
+
+  <div class="noise"></div>
+
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-void/75 backdrop-blur-2xl">
+    <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
+      <a href="#home" class="group flex items-center gap-3">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl border border-cyan-300/40 bg-cyan-300/10 text-lg font-black text-cyan-200 shadow-glow transition group-hover:rotate-6">SY</span>
+        <span>
+          <span class="block text-sm font-black uppercase tracking-wider text-white">Sumit Kumar Yadav</span>
+          <span class="block text-xs text-cyan-200/80">Full Stack + DevOps</span>
+        </span>
+      </a>
+      <button id="menuBtn" class="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5 md:hidden"><i class="fa-solid fa-bars"></i></button>
+      <ul id="navMenu" class="hidden md:flex items-center gap-2 text-sm font-bold text-slate-300">
+        <li><a class="nav-link rounded-full px-4 py-2 transition hover:bg-cyan-300/10 hover:text-cyan-200" href="#home">Home</a></li>
+        <li><a class="nav-link rounded-full px-4 py-2 transition hover:bg-cyan-300/10 hover:text-cyan-200" href="#about">About</a></li>
+        <li><a class="nav-link rounded-full px-4 py-2 transition hover:bg-cyan-300/10 hover:text-cyan-200" href="#skills">Skills</a></li>
+        <li><a class="nav-link rounded-full px-4 py-2 transition hover:bg-cyan-300/10 hover:text-cyan-200" href="#projects">Projects</a></li>
+        <li><a class="nav-link rounded-full px-4 py-2 transition hover:bg-cyan-300/10 hover:text-cyan-200" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-void/95 px-5 py-4 md:hidden">
+      <a class="block rounded-xl px-4 py-3 font-bold text-slate-200 hover:bg-white/5" href="#home">Home</a>
+      <a class="block rounded-xl px-4 py-3 font-bold text-slate-200 hover:bg-white/5" href="#about">About</a>
+      <a class="block rounded-xl px-4 py-3 font-bold text-slate-200 hover:bg-white/5" href="#skills">Skills</a>
+      <a class="block rounded-xl px-4 py-3 font-bold text-slate-200 hover:bg-white/5" href="#projects">Projects</a>
+      <a class="block rounded-xl px-4 py-3 font-bold text-slate-200 hover:bg-white/5" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="relative min-h-screen overflow-hidden pt-32">
+      <div class="absolute -right-40 top-20 h-[520px] w-[520px] rounded-full bg-cyan-400/20 blur-3xl"></div>
+      <div class="absolute -left-40 bottom-10 h-[420px] w-[420px] rounded-full bg-red-500/10 blur-3xl"></div>
+      <div class="mx-auto grid min-h-[calc(100vh-8rem)] max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.12fr_.88fr]">
+        <div class="reveal">
+          <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-sm font-extrabold text-cyan-100 shadow-glow">
+            <span class="h-2 w-2 rounded-full bg-cyan-300 animate-ping"></span>
+            Open for high-impact engineering roles
+          </div>
+          <h1 class="font-display text-[4.5rem] leading-[.88] tracking-wide text-white sm:text-[6.5rem] lg:text-[8rem]">
+            CODE<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-orange-300">ASSEMBLED</span>
+          </h1>
+          <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
+            I’m <strong class="text-white">Sumit Kumar Yadav</strong>, a Full Stack Developer with DevOps knowledge, building production-grade business applications with React, Go, PHP, Node.js, PostgreSQL, MongoDB, Redis, Docker, AWS, Apache, and Caddy.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#projects" class="group rounded-2xl bg-cyan-300 px-6 py-4 font-black text-void shadow-glow transition hover:-translate-y-1">
+              View Missions <i class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-1"></i>
+            </a>
+            <a href="https://drive.google.com/file/d/1ZB1nM3pygobb8qQNHaD1hf-MEaWN0BC_/view?usp=drivesdk" target="_blank" class="rounded-2xl border border-white/15 bg-white/5 px-6 py-4 font-black text-white transition hover:-translate-y-1 hover:border-cyan-300/60 hover:text-cyan-200">
+              Resume <i class="fa-solid fa-file-arrow-down ml-2"></i>
+            </a>
+          </div>
+          <div id="heroStats" class="mt-10 grid max-w-2xl grid-cols-3 gap-3"></div>
+        </div>
+
+        <div class="hero-card reveal relative rounded-[2rem] border border-white/10 bg-white/[.06] p-5 shadow-glow backdrop-blur-xl comic-border">
+          <div class="absolute -right-7 -top-7 grid h-24 w-24 place-items-center rounded-full bg-orange-400 text-4xl shadow-goldGlow animate-float">⚡</div>
+          <div class="relative overflow-hidden rounded-[1.5rem] border border-cyan-300/20 bg-gradient-to-br from-cyan-300/15 via-slate-900 to-red-500/10 p-8">
+            <div class="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-cyan-300/20 to-transparent animate-scan"></div>
+            <div class="mx-auto grid h-64 w-64 place-items-center rounded-full border border-cyan-300/30 bg-void/70 shadow-glow animate-pulseGlow">
+              <div class="grid h-44 w-44 place-items-center overflow-hidden rounded-full border border-orange-300/30 bg-cyan-300/10">
+                <img
+                  src="https://drive.google.com/thumbnail?id=1RPi1ZFsfNnX13usWRKVvJLthg5kVmHEE&sz=w1000"
+                  alt="Sumit Kumar Yadav profile photo"
+                  class="h-full w-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')"
+                >
+                <span class="hidden font-display text-7xl text-cyan-100">SY</span>
+              </div>
+            </div>
+            <div class="mt-8 rounded-3xl border border-white/10 bg-black/30 p-5">
+              <p class="text-xs font-black uppercase tracking-[.35em] text-cyan-200">Current Stack</p>
+              <p id="typedStack" class="mt-3 min-h-8 text-xl font-black text-white"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="relative py-24">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal mb-12 max-w-3xl">
+          <p class="font-display text-3xl tracking-wide text-cyan-200">ORIGIN STORY</p>
+          <h2 class="mt-3 font-display text-6xl leading-none text-white md:text-7xl">From portfolio projects to business-grade systems.</h2>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-[.8fr_1.2fr]">
+          <div class="reveal rounded-[2rem] border border-white/10 bg-white/[.05] p-6 backdrop-blur-xl">
+            <div class="rounded-[1.5rem] border border-cyan-300/20 bg-cyan-300/10 p-6">
+              <p class="text-sm font-black uppercase tracking-[.3em] text-cyan-200">Role</p>
+              <h3 class="mt-4 text-3xl font-black text-white">Full Stack Developer with DevOps knowledge</h3>
+              <p class="mt-4 text-slate-300">I work across frontend, backend, databases, infrastructure, and business workflows — from UI to production deployment.</p>
+            </div>
+          </div>
+          <div id="aboutCards" class="grid gap-5 md:grid-cols-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-24">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal mb-12 text-center">
+          <p class="font-display text-3xl tracking-wide text-orange-300">ARSENAL</p>
+          <h2 class="font-display text-6xl leading-none text-white md:text-7xl">Tech weapons I use.</h2>
+          <p class="mx-auto mt-5 max-w-2xl text-slate-300">Dynamic skill cards grouped by frontend, backend, database, cloud/devops, and tools.</p>
+        </div>
+        <div id="skillFilters" class="reveal mb-8 flex flex-wrap justify-center gap-3"></div>
+        <div id="skillsGrid" class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"></div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-24">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal mb-12 text-center">
+          <p class="font-display text-3xl tracking-wide text-cyan-200">MISSIONS</p>
+          <h2 class="font-display text-6xl leading-none text-white md:text-7xl">Major business projects.</h2>
+          <p class="mx-auto mt-5 max-w-2xl text-slate-300">Current business work first, followed by selected product and clone builds.</p>
+        </div>
+        <div id="projectsGrid" class="grid gap-8"></div>
+      </div>
+    </section>
+
+    <section id="commerce-projects" class="py-24">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal mb-12 text-center">
+          <p class="font-display text-3xl tracking-wide text-orange-300">COMMERCE BUILDS</p>
+          <h2 class="font-display text-6xl leading-none text-white md:text-7xl">E-commerce and marketplace projects.</h2>
+          <p class="mx-auto mt-5 max-w-2xl text-slate-300">Collaborative and individual builds focused on product catalogs, cart flows, and admin operations.</p>
+        </div>
+        <div id="commerceProjectsGrid" class="grid gap-8"></div>
+      </div>
+    </section>
+
+    <section id="utility-projects" class="py-24">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal mb-12 text-center">
+          <p class="font-display text-3xl tracking-wide text-cyan-200">UTILITY BUILD</p>
+          <h2 class="font-display text-6xl leading-none text-white md:text-7xl">Tracking and personal finance work.</h2>
+          <p class="mx-auto mt-5 max-w-2xl text-slate-300">Smaller focused apps built around everyday workflows and real-time state updates.</p>
+        </div>
+        <div id="utilityProjectsGrid" class="grid gap-8"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-24">
+      <div class="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[.9fr_1.1fr]">
+        <div class="reveal rounded-[2rem] border border-white/10 bg-white/[.05] p-8 backdrop-blur-xl shadow-glow">
+          <p class="font-display text-3xl tracking-wide text-orange-300">CONTACT BASE</p>
+          <h2 class="mt-3 font-display text-6xl leading-none text-white">Ready for the next mission.</h2>
+          <p class="mt-5 text-slate-300">Reach out for full-stack, backend, DevOps, business automation, or product engineering opportunities.</p>
+          <div id="contactLinks" class="mt-8 grid gap-4"></div>
+        </div>
+        <form id="contactForm" class="reveal rounded-[2rem] border border-white/10 bg-white/[.05] p-8 backdrop-blur-xl">
+          <div class="grid gap-5">
+            <label class="grid gap-2 font-bold text-slate-200">Name<input required name="name" class="rounded-2xl border border-white/10 bg-black/30 px-4 py-4 outline-none transition focus:border-cyan-300" placeholder="Your name"></label>
+            <label class="grid gap-2 font-bold text-slate-200">Email<input required type="email" name="email" class="rounded-2xl border border-white/10 bg-black/30 px-4 py-4 outline-none transition focus:border-cyan-300" placeholder="your@email.com"></label>
+            <label class="grid gap-2 font-bold text-slate-200">Message<textarea required name="message" rows="6" class="rounded-2xl border border-white/10 bg-black/30 px-4 py-4 outline-none transition focus:border-cyan-300" placeholder="Tell me about the opportunity"></textarea></label>
+            <button class="rounded-2xl bg-cyan-300 px-6 py-4 font-black text-void shadow-glow transition hover:-translate-y-1" type="submit">Send Signal <i class="fa-solid fa-paper-plane ml-2"></i></button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-sm text-slate-400">
+    <p>© <span id="year"></span> Sumit Kumar Yadav. Superhero-inspired portfolio. No official character assets used.</p>
+  </footer>
+
+  <script src="./assets/js/data.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
